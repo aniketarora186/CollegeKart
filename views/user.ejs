@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="stylesheets/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <title>CollegeKart</title>
+  <link rel="icon" href="../images/logo.png">
+</head>
+
+<style>
+  .container {
+  position: relative;
+  font-family: sans-serif;
+}
+.zoom {
+padding: 50px;
+background-color: green;
+transition: transform .2s; /* Animation */
+width: 200px;
+height: 200px;
+margin: 0 auto;
+}
+.zoom:hover {
+transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+.container .box {
+  width: 11.875em;
+  height: 25.875em;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.074);
+  border: 1px solid rgba(255, 255, 255, 0.222);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border-radius: .7rem;
+  transition: all ease .3s;
+}
+
+.container .box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.container .box .title {
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: .1em
+}
+
+.container .box div strong {
+  display: block;
+  margin-bottom: .5rem;
+}
+
+.container .box div p {
+  margin: 0;
+  font-size: .9em;
+  font-weight: 300;
+  letter-spacing: .1em;
+}
+
+.container .box div span {
+  font-size: .7rem;
+  font-weight: 300;
+}
+
+.container .box div span:nth-child(3) {
+  font-weight: 500;
+  margin-right: .2rem;
+}
+
+.card:hover {
+  box-shadow: 0px 10px 20px 5px #f5e4d33f;
+  border: 7px solid rgba(255, 255, 255, 0.454);
+}
+</style>
+
+<body style="font-family: cursive; overflow-x: hidden; overflow-y: hidden;" >
+ <!-- navbar: starts -->
+
+ <div>
+  <nav class="navbar navbar-light " style="background-color: #00666B;">
+    
+     <div class="container-fluid ">
+      <a class=" text-white navbar-brand " style="font-size: x-large; font-weight: bolder;">
+        <img src="/images/<%=result[0].image%>" width="60" height="36" class="d-inline-block align-top"
+        style="padding-left: 20px;">
+       <span style="font-family: cursive; color:rgb(222, 249, 249); padding-left: 0.5rem;">Welcome <%=result[0].sname%></span> 
+      </a>
+      
+      <span class="d-flex " style="gap:  0.8rem;">
+        <form action="MyProducts" method="get">
+        <button type="submit" class="btn btn-primary btn-hover" style=" font-family: cursive;background-color:#0d6eef00" data-bs-whatever="@getbootstrap">My Products</button>
+        <input type="hidden" name="sid" id="sid" value="<%=result[0].sid%>">
+      </form>
+
+      <form action="/homepage" method="get">
+        <button type="submit" class="btn btn-primary btn-hover" style=" font-family: cursive;background-color:#0d6eef00" data-bs-whatever="@getbootstrap">Logout</button>
+        
+      </form>
+
+     
+      </span>
+   
+
+
+
+      </div> 
+    
+    
+     
+    
+  </nav>
+</div>
+<!-- navbar: ends -->
+<div style="padding-top: 3rem; background: url(/images/user1.jpg) no-repeat ; 
+background-size: cover; height: 90vh;">
+
+  <div class="card col-4 " style="width: 20rem; margin-left: 3rem; border-radius: 10px;">
+    <img src="/images/card2.jpeg" height="350vh" class="card-img-top" style="padding-top: 1rem;">
+    <span class="card-body">
+    <a href="viewAllProduct" class="btn card-title " style="font-family: cursive; font-size: x-large; font-weight: 800; display: block; margin:auto">View All Products</a>
+    </span> 
+    </div>
+      
+
+  </div>
+
+
+
+
+
+    
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

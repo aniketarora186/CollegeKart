@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="stylesheets/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <title>CollegeKart</title>
+  <link rel="icon" href="../images/logo.png">
+  <style>
+           
+    th, td {
+      border: 1px solid black;
+      border-radius: 10px;
+    }
+   
+    </style>
+</head>
+<body  style="background-color: #a0c1ede3; font-family: cursive;"  >
+
+
+
+    <div class="container center">
+     
+      <h1 style= " display: flex; justify-content: center; padding-top: 2rem; font-weight: bolder; text-decoration-line: underline; font-style:normal;  padding-bottom: 1rem; ">PRODUCT DETAILS</h1>
+        <table  class=" table-sm table-striped border-dark border-5 border  table  table-centered mb-0 table-bordered  table-hover" style="font-size:large;  background-color: #ECE8DE; border-color: black;  border-style: double;  ">
+            <thead style="">
+                <tr>
+                    
+                    <th style="width: 5%;">S.no</th>
+                    <th style="width: 20%;">Image</th>
+                    <th style="width: 15%;">Product Name</th>
+                    <th style="width: 30%;">Description</th>
+                    <th style="width: 10%;">Price</th>
+                    <th style="width: 10%;">Action</th>
+                </tr>
+            </thead>
+            <tbody >
+                <% if(result){result.map((item,index)=>{ %>
+                
+                <tr>
+                    <td><%=index+1%></td>
+                    <td >
+                      <img width="150" height="150" class="rounded-top" src="/images/<%=item.pimg%>" alt="Image Not Available" >
+                      <button type="submit" class="btn  btn-hover" style="background-color: transparent;" onclick="changepicture(<%=item.pid%>)">
+                        
+                          Change Picture
+                          </span></button>
+                      
+                  </td>
+                    <td>
+                      <%=item.pname%> <br><br>
+                      <h6 style="text-decoration: underline;">Listed By:-</h6>
+                      <%=item.sname%>
+                      <%=item.enrollment%>
+                    </td>
+                    <td><%=item.pdesc%></td>
+                    <td>₹<%=item.price%>/-</td>
+                    
+                   
+
+                    <td class="table-action">
+                        <a href="fillProductData?id=<%=item.pid%>">
+                        <img src="/images/edit.png" width="40px" height="40px"></a>
+                        
+                        <img src="/images/delete.png" onclick="myfun(<%=item.pid%>)" width="40px" height="40px">
+                        
+                    </td>
+                </tr>
+                <% })} else{ %>
+                    <h2>server error</h2>
+               <% }%>
+             
+            </tbody>
+        </table>
+      
+    </div>
+
+
+
+
+
+    <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <form action="deleteProduct" method="get">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header" style=" background-color: aliceblue;">
+              <img src="/images/alert.png" width="40px" height="40px">
+              <h5 style="padding-left: 0.5rem;" class="modal-title">Alert</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style=" background-color: aliceblue;">
+              <input type="hidden" id="pid" name="pid">
+              <p style="font-weight: bold; font-size: larger;">Are You Sure you want to Delete the Product?</p>
+            </div>
+            <div class="modal-footer" style=" background-color: aliceblue;">
+              <button type="submit" class="btn btn-primary">Confirm</button>
+            </div>
+          </div>
+        </div>
+      </form>
+      </div>
+
+      <div class="modal" id="Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <form action="UpdatePicture" method="post" enctype="multipart/form-data">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header" style=" background-color: aliceblue;">
+                
+                <h5 style="padding-left: 0.5rem;" class="modal-title">Update Picture</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body" style=" background-color: aliceblue;">
+                <input type="hidden" id="id" name="id">
+                <input type="file" id="pimg" name="pimg" accept="image">
+              </div>
+              <div class="modal-footer" style=" background-color: aliceblue;">
+                <button type="submit" class="btn btn-primary">Confirm</button>
+              </div>
+            </div>
+          </div>
+        </form>
+        </div>
+       
+
+
+
+      
+    <script>
+        function myfun(id){
+            console.log(id);
+            document.getElementById('pid').value= id;
+            $('#myModal').modal('show');
+        }
+
+        function changepicture(id){
+            console.log(id);
+            document.getElementById('id').value= id;
+            $('#Modal').modal('show');
+        }
+
+
+      
+        </script>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
+    crossorigin="anonymous">
+</script>
+
+
+
+
+    </body>
+    </html>

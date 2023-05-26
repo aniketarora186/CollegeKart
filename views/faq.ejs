@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ PAGE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/style1.css">
+
+</head>
+
+<body>
+    <main>
+
+        <h1 class="faq-heading">Frequently Asked Questions</h1>
+        <section class="faq-container">
+            <div class="faq-one">
+
+                <!-- faq question -->
+                <h1 class="faq-page">What is CollegeKart?</h1>
+
+                <!-- faq answer -->
+                <div class="faq-body">
+                    <p>CollegeKart is an e-commerce platform designed to facilitate the buying and selling of used goods among students on a college campus</p>
+                </div>
+            </div>
+            <hr class="hr-line">
+
+            <div class="faq-two">
+
+                <!-- faq question -->
+                <h1 class="faq-page">Why do you need CollegeKart?</h1>
+
+                <!-- faq answer -->
+
+                <div class="faq-body">
+                    <p>The benefits of CollegeKart include convenience, cost-effectiveness, sustainability, community building, student-focus, and the potential for generating revenue.</p>
+                </div>
+            </div>
+            <hr class="hr-line">
+
+
+            <div class="faq-three">
+
+                <!-- faq question -->
+<h1 class="faq-page">What are benefits of using CollegeKart?</h1>
+
+                <!-- faq answer -->
+                <div class="faq-body">
+                    <p>CollegeKart is needed because there is currently no system for students to purchase and sell used goods within a college campus environment, making it difficult for students to find the items they need and to get rid of items they no longer need. By providing a platform for students to buy and sell used goods, CollegeKart can help to address this problem and provide numerous benefits for students.</p>
+                </div>
+            </div>
+
+        </section>
+    </main>
+    <script>
+
+
+var faq = document.getElementsByClassName("faq-page");
+var i;
+
+for (i = 0; i < faq.length; i++) {
+    faq[i].addEventListener("click", function () {
+        /* Toggle between adding and removing the "active" class,
+        to highlight the button that controls the panel */
+        this.classList.toggle("active");
+
+        /* Toggle between hiding and showing the active panel */
+        var body = this.nextElementSibling;
+        if (body.style.display === "block") {
+            body.style.display = "none";
+        } else {
+            body.style.display = "block";
+        }
+    });
+}
+    </script>
+</body>
+
+
+</html>

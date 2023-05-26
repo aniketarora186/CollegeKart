@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous">
+  <link  rel="stylesheet" href="stylesheets/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <title>CollegeKart</title>
+  <link rel="icon" href="/images/logo.png">
+  <style>
+    .cards {
+      display: flex;
+      flex-basis: calc(33.33% - 20px); /* adjust this value to your liking */
+      margin: 10px;
+      margin-right: 0;
+    }
+    .card:last-child {
+      margin-right: 10px;
+    }
+        .container {
+          display:flex;
+          flex-wrap: wrap;
+          position: relative;
+          font-family: sans-serif;
+          
+          
+      }
+      .zoom {
+      padding: 50px;
+      background-color: green;
+      transition: transform .2s; /* Animation */
+      width: 200px;
+      height: 200px;
+      margin: 0 auto;
+    }
+    .zoom:hover {
+      transform: scale(1.10); /* (115% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    }
+      
+      .container .box {
+        width: 11.875em;
+        height: 30rem;
+        padding: 1rem;
+        background-color: rgba(255, 255, 255, 0.074);
+        border: 1px solid rgba(255, 255, 255, 0.222);
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+        border-radius: .7rem;
+        transition: all ease .3s;
+      }
+      
+    
+    .container .box .title {
+        font-size: 2rem;
+        font-weight: 500;
+        letter-spacing: .1em
+      }
+      
+      .container .box div strong {
+        display: block;
+        margin-bottom: .5rem;
+      }
+      
+      .container .box div p {
+        margin: 0;
+        font-size: .9em;
+        font-weight: 300;
+        letter-spacing: .1em;
+      }
+      
+      .container .box div span {
+        font-size: .7rem;
+        font-weight: 300;
+      }
+      
+      .container .box div span:nth-child(3) {
+        font-weight: 500;
+        margin-right: .2rem;
+      }
+      
+      .container .box:hover {
+        box-shadow: 0px 10px 20px 5px #f5e4d33f;
+        border: 7px solid rgba(255, 255, 255, 0.454);
+      }
+      
+    
+      </style>
+  
+  
+</head>
+
+
+<body style="overflow-x: hidden; font-family: cursive; background-color: rgb(149, 236, 207);">
+
+    <h1 style= " display: flex; justify-content: center; padding-top: 2rem; font-weight: bolder; text-decoration-line: underline; font-style:normal;   ">ALL PRODUCTS</h1>
+
+<div style=" padding-left: 5rem; padding-bottom: 2rem;">
+    
+
+   
+   <div  style=" display:flex; flex-direction: row; flex-wrap:wrap ">
+
+    <% if(result){result.map((item,index)=>{ %>
+
+    
+
+    <div class=" container cards " style="padding-bottom: 2rem;" >
+        <div class=" box zoom " style="width: 18rem; background-color: #E8E8E8; ">
+           <center> <img src="/images/<%=item.pimg%>" width="40%" height="25%"  >  </center>
+            
+            <ul class="list-group list-group-flush">
+              <p>
+                <span style="font-weight: bolder;">Product Name:</span><%=item.pname%></p>
+              <p>
+                <span style="font-weight: bolder;">Description:</span><%=item.pdesc%></p>
+              <p>
+                <span style="font-weight: bolder;">Price:</span>₹<%=item.price%>/-</p>
+              <p >
+                <span style="font-weight: bolder;">Seller:</span><%=item.sname%></p>
+              <p>
+                <span style="font-weight: bolder;">WhatsApp:</span><%=item.mobile%>
+                <a href="https://wa.me/<%=item.mobile%>" target="_blank">
+                <img src="/images/whatsapp.png"  style=" margin-left: 15%;"width="25px" height="25px"></a></p>
+              <p >
+                <span style="font-weight: bold;">Email:</span>
+                <a  href="mailto:<%=item.email%>"><%=item.email%></a> </p> 
+            
+            </ul>
+       
+            
+        </div>
+        
+    </div>
+
+    
+    <% })} else{ %>
+        <h2>server error</h2>
+   <% }%>
+   </div>
+    
+ 
+
+    
+</body>
+</html>
